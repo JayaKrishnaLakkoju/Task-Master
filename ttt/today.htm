@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+   <title> T T T </title>
+   <meta charset="UTF-8">
+   <meta name="Author" content="JAYA KRISHNA" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="tick.css">
+</head>
+
+<body>
+
+   <p id="cen"><strong>Play the Tic Toc Game now.</strong></p>
+
+   <!--this is for buidling the boxes in matrix 3/3 form and given the repspective ids for different boxes and
+        the comman class for the id boxes 1.....9-->
+   <div class="container" id="main">
+      <span id="turn"></span><br>
+      <div class="box" id="box1"></div>
+      <div class="box" id="box2"></div>
+      <div class="box" id="box3"></div>
+      <div class="box" id="box4"></div>
+      <div class="box" id="box5"></div>
+      <div class="box" id="box6"></div>
+      <div class="box" id="box7"></div>
+      <div class="box" id="box8"></div>
+      <div class="box" id="box9"></div>
+   </div>
+
+   <script>
+      //by this variable trun declared to fech the span element to show the users to know them whose turn
+      //it is and when the O and X are to be placed on the inline span elements and setting a constant
+      //value as O for the intial condition..
+      var toggle = document.getElementById("turn"),
+         boxes = document.querySelectorAll("#main div"), set_the_initial = 0;
+
+      //this is for selecting the boxes in function written by giving the 3 parameteres for every three
+      //boxes and adds the classlist for three parameters to add the texta s "win" and add them to inner
+      //html of boxes...
+      function selection_boxes(a1, a2, a3) {
+         a1.classList.add("win");
+         a2.classList.add("win");
+         a3.classList.add("win");
+         turn.innerHTML = a1.innerHTML + " WON";
+      }
+
+      function finding_who() {
+         var box1 = document.getElementById("box1");
+         var box2 = document.getElementById("box2");
+         var box3 = document.getElementById("box3");
+         var box4 = document.getElementById("box4");
+         var box5 = document.getElementById("box5");
+         var box6 = document.getElementById("box6");
+         var box7 = document.getElementById("box7");
+         var box8 = document.getElementById("box8");
+         var box9 = document.getElementById("box9");
+
+         // get all proabable occurence and select the boxes which are been matched in this if condition checks
+         //for the alignment of boxes to be compared by equal to operator and and logical and operatior for two
+         //expressions checing  and equals are not equal to type operator  that compared and check the innerHTML
+         //every boxes the and adding the method of every boxes after this.
+         if (box1.innerHTML !== "" && box1.innerHTML === box2.innerHTML && box1.innerHTML === box3.innerHTML)
+            selection_boxes(box1, box2, box3);
+
+         if (box4.innerHTML !== "" && box4.innerHTML === box5.innerHTML && box4.innerHTML === box6.innerHTML)
+            selection_boxes(box4, box5, box6);
+
+         if (box7.innerHTML !== "" && box7.innerHTML === box8.innerHTML && box7.innerHTML === box9.innerHTML)
+            selection_boxes(box7, box8, box9);
+
+         if (box1.innerHTML !== "" && box1.innerHTML === box4.innerHTML && box1.innerHTML === box7.innerHTML)
+            selection_boxes(box1, box4, box7);
+
+         if (box2.innerHTML !== "" && box2.innerHTML === box5.innerHTML && box2.innerHTML === box8.innerHTML)
+            selection_boxes(box2, box5, box8);
+
+         if (box3.innerHTML !== "" && box3.innerHTML === box6.innerHTML && box3.innerHTML === box9.innerHTML)
+            selection_boxes(box3, box6, box9);
+
+         if (box1.innerHTML !== "" && box1.innerHTML === box5.innerHTML && box1.innerHTML === box9.innerHTML)
+            selection_boxes(box1, box5, box9);
+
+         if (box3.innerHTML !== "" && box3.innerHTML === box5.innerHTML && box3.innerHTML === box7.innerHTML)
+            selection_boxes(box3, box5, box7);
+
+      }
+
+
+
+      for (var i = 0; i < boxes.length; i++) {
+         boxes[i].onclick = function () {
+
+            if (this.innerHTML !== "X" && this.innerHTML !== "O") {
+               if (set_the_initial % 2 === 0) {
+                  this.innerHTML = "X";
+                  toggle.innerHTML = "O Turn Now";
+                  finding_who();
+                  set_the_initial += 1;
+               }
+               else {
+                  this.innerHTML = "O";
+                  toggle.innerHTML = "X Turn Now";
+                  finding_who();
+                  set_the_initial += 1;
+               }
+            }
+         };
+      }
+   </script>
+
+</body>
+
+</html> 

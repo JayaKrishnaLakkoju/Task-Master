@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="margin:155px 570px; width:auto; height:auto;">
+<select id="city">
+<option>opt your city.</option>
+<option id="Hyderabad" value="Hyderabad">Hyderabad</option>
+<option id="Bangalore" value="Delhi">Delhi</option>
+<option id="Mumbai" value="Mumbai">Mumbai</option>
+<option id="Bilaspur" value="Bilaspur">Bilaspur</option>
+<input type="submit" id="submit" value="submit">
+</select>
+
+
+<p id= "cit"></p>
+<p id= "Temperature"></p>
+<p id="lon"></p>
+<p id="long"></p>
+<p id="lat"></p>
+</div>
+<script>
+        $(document).ready(function(){
+        $("#submit").click(function(){
+        var city= $("#city").val();
+        $.get("https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=034a7c72debc648e687b80a0bcfa6d58", 
+        function(data){
+        var name = data.name;
+        var temp = data.main.temp;
+         var coordinate1 = data.coord.lon;
+         var coordinate2 = data.coord.lat;
+       
+        document.getElementById('cit').innerHTML = "CITY:-  "+name;
+        document.getElementById('Temperature').innerHTML ="TEMPERATURE:- "+ temp;
+         document.getElementById('lon').innerHTML = "geolocation:-";
+         document.getElementById('long').innerHTML = coordinate1;
+         document.getElementById('lat').innerHTML = coordinate2;
+        
+        
+        });
+        });
+        });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            direction flow
+        </title>
+        <meta name="author" content="jayakrishna">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+                
+               .b{
+                width: 20px;
+                height:20px;
+                border-radius:20px;
+                background-color: red;
+                position: relative;;
+                animation-name: example;
+                animation-duration:5s;
+                animation-direction: normal;  
+                }
+                
+                @keyframes example {
+                  0%   {background-color:red; left:0px; top:0px;}
+                  25%  {background-color:red; left:1335px; top:0px;}
+                  50%  {background-color:red; left:1335px; top:625px;}
+                  75%  {background-color:red; left:0px; top:625px;}
+                  100% {background-color:red; left:0px; top:0px;}
+                }
+
+                
+        </style>
+    </head>
+    <body>
+
+         <div class="b">
+                        
+         </div>
+        
+    </body>
+</html>
